@@ -10,4 +10,3 @@ $obj_role[] = new role(role_id: 4, role_name: "customer", role_description: "Bel
 include 'view/role_list.php';
 
 ?>
-
