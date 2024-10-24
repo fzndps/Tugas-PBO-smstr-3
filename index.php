@@ -1,12 +1,37 @@
 <?php 
-require_once 'domain_Object/node_role.php';
+require_once 'models/role_model.php';
+session_start();
 
-$obj_role = [];
-$obj_role[] = new role(role_id: 1, role_name: "super admin", role_description: "mengatur admin", role_status: 1);
-$obj_role[] = new role(role_id: 2, role_name: "admin", role_description: "mengatur kasir", role_status: 0);
-$obj_role[] = new role(role_id: 3, role_name: "kasir", role_description: "mengatur uang", role_status: 1);
-$obj_role[] = new role(role_id: 4, role_name: "customer", role_description: "Beli barang", role_status: 1);
+if (isset($_GET['modul'])) {
+  $modul = $_GET['modul'];
+}else{
+  $modul = 'dashboard';
+}
 
-include 'view/role_list.php';
+switch ($modul) {
+  case 'dashboard':
+    include 'view/kosong.php';
+    break;
+  case 'role':
+    $obj_modelRole = new modelRole();
 
+    if (isset($_GET['fitur'])) {
+      $fitur = $_GET['fitur'];
+    }else{
+      $fitur = null;
+    }
+    switch ($fitur) {
+      case 'add':
+        $role_name = $_POST['role_name'];
+        $role_desc = $_POST['role_description'];
+        $role_status = $_POST['role_status'];
+        $obj_modelRole->addRole($role_name, $role_desc, $role_status);
+        header('location: index.php?modul=role');
+        break;
+      default:
+        $obj_role = $obj_modelRole->getAllRoles();
+        include 'view/role_list.php';
+    }
+    break;
+}
 ?>

@@ -2,25 +2,27 @@
 session_start(); //start session
 session_destroy(); //gunakan jika data bertumpuk (atau barusan mencoba)
 //dependancy
+
 require_once 'role_model.php';
+
 echo "== default data role =="."<br>";
 //testing create model and view all datas
 $obj_Role = new modelRole();
 foreach ($obj_Role->getAllRoles() as $role) {
-echo "role id: ".$role->role_id."<br>";
-echo "role name: ".$role->role_name."<br>";
-echo "role desc: ".$role->role_description."<br>";
-echo "role status: ".$role->role_status."<br><br>";
+    echo "role id: ".$role->role_id."<br>";
+    echo "role name: ".$role->role_name."<br>";
+    echo "role desc: ".$role->role_description."<br>";
+    echo "role status: ".$role->role_status."<br><br>";
 }
 //add new role
 echo "== testing add new role =="."<br>";
 $obj_Role->addRole (role_name: "new role", role_desc: "testing new role", role_status: 0);
 $obj_Role->addRole(role_name: "very new role", role_desc: "testing new new role", role_status: 1);
 foreach ($obj_Role->getAllRoles() as $role) {
-echo "role id: ".$role->role_id."<br>";
-echo "role name: ".$role->role_name."<br>";
-echo "role desc: ".$role->role_description."<br>";
-echo "role status: ".$role->role_status."<br><br>";
+    echo "role id: ".$role->role_id."<br>";
+    echo "role name: ".$role->role_name."<br>";
+    echo "role desc: ".$role->role_description."<br>";
+    echo "role status: ".$role->role_status."<br><br>";
 }
 
 //update role
