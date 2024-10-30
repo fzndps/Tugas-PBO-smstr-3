@@ -48,7 +48,7 @@ class modelRole
         foreach ($this->roles as $role) {
             if ($role->role_id == $role_id) {
                 $role->role_name = $role_name;
-                $role->role_desc = $role_desc;
+                $role->role_description = $role_desc;
                 $role->role_status = $role_status;
                 $this->saveToSession();
                 return true;

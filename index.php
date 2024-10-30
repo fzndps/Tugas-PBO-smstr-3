@@ -43,7 +43,7 @@ switch ($modul) {
             echo "Role dengan ID tersebut tidak ditemukan.";
             exit; // atau arahkan ke halaman lain
           }
-          include 'view/role_input.php';
+          include 'view/role_update.php';
         }
         break;
       case 'update':
